@@ -8,10 +8,13 @@ import csv
 
 
 class WebScraper:
+    
     # def __init__(self, URL):
     #     self.URL = URL
     
     def get_link(self, url):
+        '''get the words from the link, convert it to text abd renove 
+        the special characters wfrom the text '''
 
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -21,6 +24,9 @@ class WebScraper:
         return soup
 
     def filter_words(self, soup):
+        '''return the words in a list after it has been filtered out the 
+        common words + addictional words'''
+
 
         arr = []
         for element in soup:
@@ -29,6 +35,7 @@ class WebScraper:
         return arr
     
     def sort_list(self, arr):
+        '''sorting the data in a dictionary with keys and values'''
         result = {}
         for item in arr:
             result[item] =  arr.count(item)
@@ -36,20 +43,25 @@ class WebScraper:
         return a
     
     def reverse_data(self, a):
+        '''since the words output are starting from the lowest to the biggest, you reverse it to
+        get the biggest value as required'''
         highest_count = dict(sorted(a.items(), key=operator.itemgetter(1), reverse=True)[:10])
         highest_word = [k for k in highest_count.keys()]
         print(f'The top word is: {highest_word[0]}')
         return highest_count
     
 class LogCsv:
+    '''this class is to append the url into the log file'''
     def csv_log(self, url):
         with open('log.csv', 'a') as f:
             writer = csv.writer(f)
             writer.writerow([url])
+            return "Done"
 
 class Visual(WebScraper):
     
     def chart_details(self, reverse_data):
+        '''matplotlib to create the pie chart'''
         value = [i for i in reverse_data.values()]
         key = [i for i in reverse_data.keys()]
         plt.figure(figsize =(10, 7))
@@ -58,6 +70,7 @@ class Visual(WebScraper):
         
         
     def graph_details(self, reverse_data):
+        '''matplotlib to create the bar chart'''
         value = [i for i in reverse_data.values()]
         key = [i for i in reverse_data.keys()]
         plt.bar(key, value)

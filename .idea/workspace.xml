@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="335e1abe-2ed8-4073-be6e-c9001f7d5a71" name="Changes" comment="" />
+    <list default="true" id="335e1abe-2ed8-4073-be6e-c9001f7d5a71" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/log.csv" beforeDir="false" afterPath="$PROJECT_DIR$/log.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_webscaper.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_webscaper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscaper.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscaper.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

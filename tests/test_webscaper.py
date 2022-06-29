@@ -1,20 +1,28 @@
 import unittest
-from webscaper import WebScraper
+from webscaper import WebScraper,LogCsv
 
 
 class TestWebScaper(unittest.TestCase):
     
     def setUp(self):
         self.check_web = WebScraper()
+        self.log_csv = LogCsv()
+        self.url = 'https://www.python.org'
         self.link = self.check_web.get_link('https://www.python.org')
         self.words = self.check_web.filter_words(self.link)
         self.sort = self.check_web.sort_list(self.words)
         self.reverse = self.check_web.reverse_data(self.sort)
     
     def test_get_link(self):
-        self.assertTrue(self.link)
+        check = self.check_web.get_link(self.url)
+        self.assertTrue(check)
+        self.assertIsNone(check)
+        self.assertIsInstance(check,bool)
         
     def test_filter_words(self):
+        lst= ['is','are', 'work','time']
+        filter_words = self.check_web.filter_words(lst)
+        self.assertEqual(filter_words, ['work','time'])
         self.assertTrue(self.words)
     
     def test_sort_list(self):
@@ -22,6 +30,12 @@ class TestWebScaper(unittest.TestCase):
     
     def test_reverse_data(self):
         self.assertEqual(self.reverse)
+    
+    def test_write_file(self):
+        write_file = self.log_csv.csv_log(self.url)
+        self.assertEqual(write_file,"Done")
+        self.assertIsNotNone(write_file)
+        self.assertIsInstance(write_file,str)
     
     
 

@@ -11,7 +11,7 @@ def front_end():
     vis = Visual()
     Code = True
     while Code:
-            options = input('Would you like to scrape a website (Y/N)?').lower()
+            options = input('Would you like to scrape a website (Y/N)?: ').lower()
             if options == 'y':
                 url = input('Enter a website to scrape: ')
                 a = scraper.get_link(url)
@@ -25,6 +25,6 @@ def front_end():
             elif options == 'n':
                 print('Thanks for analysing! Come back again!!! ')
                 code = False
-                
+                break
 front_end()
         
